@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% block content %}
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20210617/pngtree-green-abstract-background-hd-stock-images-image_730786.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        table.center {
+            margin-left: auto; 
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">form</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="{% url 'admin' %}">Admin</a></li>
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+            </ul>
+
+        </div>
+    </nav>
+    <body style="background-color:#5b9fc9"  >
+        
+        <h3 style="text-align: center;">Show Student Details</h3>
+        <table border="5px" class="center">
+            <thead>
+                <tr>
+                    <th>STUDENT NAME</th>
+                    <th>EMAIL ADDRESS</th>
+                    <th>AGE</th>
+                    <th>JOINING DATE</th>
+                    <th>COURSE</th>
+                    <th>COURSE FEE</th>
+                    <th>Action</th>
+                    <th>Delete</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in students %}
+                <tr>
+                    <td>{{s.stud_name}}</td>
+                    <td>{{s.stud_address}}</td>
+                    <td>{{s.stud_age}}</td>
+                    <td>{{s.join_date}}</td>
+                   
+                    <td>{{s.course.course_name}}</td>
+                    <td>{{s.course.fee}}</td>
+                    <td><a href="{% url 'edit' s.id %}">Edit</a></td>
+                    <td><a href="{% url 'delt' s.id %}">Delete</a></td>
+                    
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endblock %}
+
+    </body>
+    </html>

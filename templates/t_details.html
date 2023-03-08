@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% block content %}
+<head>
+    {% load static %}
+    <title>..</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-image: url("https://t3.ftcdn.net/jpg/04/95/22/44/360_F_495224491_wZ1fdpUEJcdZac332hiPiU20C2Z0a8Ak.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+           
+
+        }
+        
+       h3{
+        text-align: center;
+       }
+
+      
+        
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">form</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="">Home</a></li>
+                <li><a href="">Logout</a></li>
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+            </ul>
+
+        </div>
+    </nav>
+    <div class="container ">
+    <h3 >Show Teacher Details</h3>
+  </div>
+  <section>
+        <div class="table-responsive text-nowrap">
+        <table class="table  table-striped table-hover w-auto" >
+            <thead class="table-dark ">
+                <tr>
+                    <th scope="col">First_Name</th>
+                    <th scope="col">Last_Name</th>
+                    <th scope="col" >User_name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Contact_Num</th>
+                    <th scope="col">Course</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for teachers in teacher %}
+                <tr>
+                    <td >{{teachers.user.first_name}}</td>
+                    <td >{{teachers.user.last_name}}</td>
+                    <td >{{teachers.user.username}}</td>
+                    <td>{{teachers.user.email}}</td>
+                    <td >{{teachers.user.password}}</td>
+                    <td >{{teachers.address}}</td>
+                    <td >{{teachers.number}}</td>
+                    <td >{{teachers.course.course_name}}</td>
+                    <td >{{teachers.image}}</td>
+                    {% if teachers.image == '/static/image/teacher_imag.jpg' %}
+                   <td >
+                       {{teachers.image}}<br><img src="{% static 'image/teacher_imag.jpg' %}">
+                    </td>
+                {% else %}
+                    <td>
+                        <img src="{{teachers.image.url}}" width="70" height="60">
+                    </td>
+                {% endif %}
+                <td><a href="{% url 'Del' teachers.id %}">Delete</a></td>
+                  {% endfor %} 
+                    
+                </tr>
+              
+            </tbody>
+        </table>
+        {% endblock %}
+    
+    </div>
+</section>
+    </body>
+    </html>

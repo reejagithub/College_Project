@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <style>
+    body {
+      background-image: url("https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YWJzdHJhY3R8ZW58MHx8MHx8&w=1000&q=80");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    form {
+      margin-left: 500px;
+
+    }
+
+    h2 {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+ 
+  <div class="container-fluid">
+    <h2 style="text-align: center; color: antiquewhite; "> Edit Profile</h2><br>
+
+    <form action="{% url 'profile_edit' %}" method="post" style="width:300px" >
+      {% csrf_token %}
+      <div class="form-group ">
+        <input type="text" class="form-control" placeholder="First Name" name="first_name" value="{{data.user.first_name}}" >
+      </div>
+      <div class="form-group ">
+        <input type="text" class="form-control" placeholder="Last Name" name="last_name" value="{{data.user.last_name}}">
+      </div>
+      <div class="form-group ">
+        <input type="text" class="form-control" placeholder="Username" name="username" value="{{data.user.username}}">
+      </div>
+      <div class="form-group ">
+        <input type="password" class="form-control" placeholder="Password" name="password" value="{{data.user.password}}">
+      </div>
+
+      <div class="form-group ">
+        <input type="text" class="form-control" placeholder="Address" name="Address" value="{{data.address}}">
+      </div>
+      
+      <div class="form-group ">
+        <input type="number" class="form-control" placeholder="Mobile Num" name="number" value="{{data.number}}">
+      </div>
+
+     
+      <!--<div class="form-group ">
+        <select name="cos">
+          {% for i in cs %}
+          {% if i.id == student.course.id %}
+          <option value="{{i.id}}" selected>{{i.course_name}}</option>
+          {% else %}
+          <option value="{{i.id}}" >{{i.course_name}}</option>
+          {% endif %}
+          {% endfor %}
+
+        </select> 
+
+      </div>-->
+      <div class="form-group ">
+        <input type="email" class="form-control" placeholder="Email" name="email" value="{{data.user.email}}">
+      </div>
+
+
+     
+
+      <button type="submit" class="btn btn-info ml-5" >edit</button> 
+
+
+
+
+    </form>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  body {
+			background-image: url("https://img.rawpixel.com/private/static/images/website/2022-05/rm218batch9-adj-04.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=d7bfd2e80f0fff4187ed904ed84875f8");
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+ 
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 15px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+</style>
+</head>
+<body>
+
+
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="card">
+      <div class="card-header">
+        <h2 style="text-align:center">Staff Profile </h2>
+      </div>
+      <div class="card-body">
+        <img src="{% static 'image/teacher_imag.jpg' %}"  width="50" height="50">
+        <h3> First Name: {{teacher.user.first_name}} </h3>
+        <h4> Last Name : {{teacher.user.last_name}}</h4>
+        <h4>Email : {{teacher.user.email}}</h4>
+        <h4>Course : {{teacher.course.course_name}}</h4>
+        <h4>Username : {{teacher.user.username}}</h4>
+        
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

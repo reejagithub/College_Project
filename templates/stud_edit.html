@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-image: url("https://img.freepik.com/premium-vector/cloud-pink-background_489121-1.jpg?w=2000");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+
+</head>
+<body>
+    <form  action="{% url 'edit_db' student.id %}" method="post">
+        {% csrf_token %}
+      <h3 class="mb-5">Add Student</h3>
+    
+      <div class="form-outline mb-4">
+        
+        <input type="text" placeholder="Enter Name" name="name" class="form-control "  null=True value="{{student.stud_name}}">
+        
+      </div><br>
+    
+      <div class="form-outline mb-4">
+        <input type="text" placeholder="Address"  name="address" class="form-control " value="{{student.stud_address}}">
+       
+      </div><br>
+      <div class="form-outline mb-4">
+        <input type="text" placeholder="Enter Age"  name="age" class="form-control " value="{{student.stud_age}}" />
+       
+      </div><br>
+      <div class="form-outline mb-4">
+        <input type="date" placeholder="Joining Date"  name="jdate" class="form-control "  value="{{student.join_date|date:'Y-m-d'}}">
+       
+      </div><br>
+      <div class="form-outline mb-4">
+        <select name="cos">
+          {% for i in cs %}
+          {% if i.id == student.course.id %}
+          <option value="{{i.id}}" selected>{{i.course_name}}</option>
+          {% else %}
+          <option value="{{i.id}}" >{{i.course_name}}</option>
+          {% endif %}
+          {% endfor %}
+
+
+        </select> 
+                     
+            
+      </div><br>
+    
+      <input type="Submit" value="Submit">
+      
+    
+    </form><br><br>
+    
+      
+    
+
+
+</body>
+
+</html>
